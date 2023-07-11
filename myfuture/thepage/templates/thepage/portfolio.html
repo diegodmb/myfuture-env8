@@ -1,0 +1,86 @@
+{% extends "thepage/layout.html" %}
+{% load static %}
+
+{% block title %}
+<title>DHA | Portfolio</title>
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'thepage/portfolio.css' %}">
+{% endblock head %}
+{% block body %}
+<main>
+    <div class="landing">
+    <div class="hero" id="hero">
+        <div class="topdecor">
+            <div class="frame">
+                {% for anim in tanims1 %}
+                    <span id="top1-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+            <div class="frame">
+                {% for anim in tanims2 %}
+                    <span id="top2-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+            <div class="frame">
+                {% for anim in tanims3 %}
+                    <span id="top3-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+            <div class="frame">
+                {% for anim in tanims4 %}
+                    <span id="top4-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+            <!--<div class="frame">
+                {% for anim in tanims5 %}
+                    <span id="top5-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>-->
+        </div>
+        <div class="pres">
+            <h1 class="headline">{{ landing.header1 }}</h1>
+            {% for sub in landing.sub %}
+                <p>{{ sub }}</p>
+            {% endfor %}
+        </div>
+        <div class="botdecor">
+            <!-- <div class="frame">
+            {% for anim in banims1 %}
+                <span id="bot1-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+            {% endfor %}
+            </div>
+            <div class="frame">
+                {% for anim in banims2 %}
+                    <span id="bot2-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>-->
+            <div class="frame">
+                {% for anim in banims3 %}
+                    <span id="bot3-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+            <!--<div class="frame">
+                {% for anim in banims4 %}
+                    <span id="bot4-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>-->
+            <div class="frame">
+                {% for anim in banims5 %}
+                    <span id="bot5-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="workindex" data-aos="fade-left">
+        {% for work in workindex %}
+        <!-- <a class="work" href="#{{work.id}}"> -->
+        <a class="work" href="{% url 'cliente' profile=work.id %}">
+            <div class="decor"><img src="{% static work.img %}" alt="{{work.imgalt}}"></div>
+            <h3 data-aos="zoom-in" data-aos-delay="{{forloop.counter}}00">{{work.tit}}</h3>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+</main>
+{% endblock body%}

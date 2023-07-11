@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id='icon' rel="icon" href="{% static 'thepage/img/dhaicon.svg' %}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+    
+
+    {% block title %}
+    {% endblock title %}
+    {% block head %}
+    {% endblock head %}
+    <link rel="stylesheet" href="{% static 'thepage/nav.css' %}">
+</head>
+<body>
+    <nav id="nav">
+        <!-- <div class="logo"><p>< DHA | Dev ></p></DHA></div> -->
+        <div data-aos="fade-down" class="logo"><a href="/"><img src="{% static 'thepage/img/logov4.svg' %}" alt="Logo"></a></div>
+        <div class="rmenu">
+            <div data-aos="fade-down" class="menu">
+                <a class="hvr" href="/about">Acerca de mi</a>
+                <a class="hvr" href="/portfolio">Mis Trabajos</a>
+                <a class="hvr" href="/services">Servicios</a>
+                <a class="hvr" href="">Blog</a>
+            </div>
+            <div data-aos="fade-down" class="cta">
+                <a href="/contact">Contacto</a>
+            </div>
+        </div>
+        <button class="burger" onclick="this.classList.toggle('opened');this.setAttribute('aria-expanded', this.classList.contains('opened'))" aria-label="Main Menu">
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <path class="line line1" d="M 20,29.000046 H 80.000231 C 80.000231,29.000046 94.498839,28.817352 94.532987,66.711331 94.543142,77.980673 90.966081,81.670246 85.259173,81.668997 79.552261,81.667751 75.000211,74.999942 75.000211,74.999942 L 25.000021,25.000058" />
+              <path class="line line2" d="M 20,50 H 80" />
+              <path class="line line3" d="M 20,70.999954 H 80.000231 C 80.000231,70.999954 94.498839,71.182648 94.532987,33.288669 94.543142,22.019327 90.966081,18.329754 85.259173,18.331003 79.552261,18.332249 75.000211,25.000058 75.000211,25.000058 L 25.000021,74.999942" />
+            </svg>
+        </button>
+        <div class="burger-menu">
+            <div class="sub-decor"></div>
+            <div class="burger-sub-menu">
+                <div class="logo"><a href="/"><img src="{% static 'thepage/img/logoV4.svg' %}" alt="Logo"></a></div>
+                <a href="/about">Acerca de mi</a>
+                <a href="/portfolio">Mis Trabajos</a>
+                <a href="/services">Servicios</a>
+                <a href="">Blog</a>
+                <div class="cta">
+                    <a href="/contact">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    {% block body %}
+    {% endblock body %}
+    <section class="footer">
+
+    </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static 'thepage/nav.js' %}"></script>
+    <script>
+        AOS.init({
+                    once: true,
+                    duration: 1000, 
+                    easing: 'ease-in-out',
+                });
+    </script>
+
+</body>
+</html>

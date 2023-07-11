@@ -1,0 +1,66 @@
+[
+  {
+    "cloudName": "AzureCloud",
+    "homeTenantId": "482fbfff-d27e-41e9-9a11-4cbb608305a6",
+    "id": "7f5ab906-207e-4f76-81e6-af8d4d65e823",
+    "isDefault": true,
+    "managedByTenants": [],
+    "name": "Azure subscription 1",
+    "state": "Enabled",
+    "tenantId": "482fbfff-d27e-41e9-9a11-4cbb608305a6",
+    "user": {
+      "name": "diego.dmb@outlook.com",
+      "type": "user"
+    }
+  }
+]
+
+az login
+az group create --name myFutureResourceGroup --location eastus
+az acr create --resource-group myFutureResourceGroup --name myfutureacr --sku Basic
+az acr login --name myfutureacr
+
+az acr show --name myfutureacr --query loginServer --output table
+
+docker-compose up --build -d
+
+docker compose push
+
+
+docker login azure
+docker context create aci myfutureaci 
+
+docker context ls
+
+docker context use myfutureaci 
+
+Crear volumen.
+docker --context myfutureaci volume create test-volume --storage-account myfuturedata
+
+
+
+Listar Almacenamiento
+az storage account show --name myfutureacr --resource-group myFutureResourceGroup
+
+
+Inspeccionar Volumen
+docker volume inspect myfuture-env8_static
+
+
+
+docker push myfuturecontainer.azurecr.io/myfuture  
+
+az acr show --name myfuturecontainer --query loginServer
+
+Deploy
+az container create --resource-group myFutureResourceGroup --name myfuture --image myfutureacr.azurecr.io/myfuture --cpu 1 --memory 1 --registry-login-server myfutureacr.azurecr.io --registry-username myfutureacr --registry-password bW+sghN5piJKLNsxVVJKVrt5k71rNfRZ+viDr4CSrz+ACRDNXImh --ip-address Public --dns-name-label myfutureinstance --ports 80
+
+Verify deployment
+az container show --resource-group myFutureResourceGroup --name myfuture --query instanceView.state
+
+Ver direccion de Deployment
+az container show --resource-group myFutureResourceGroup --name myfuture --query ipAddress.fqdn
+"myfutureinstance.eastus.azurecontainer.io"
+
+Ver Logs
+az container logs --resource-group myFutureResourceGroup --name myfuture

@@ -1,0 +1,67 @@
+
+Result
+----------------------
+myfutureacr.azurecr.io
+{
+  "adminUserEnabled": false,
+  "anonymousPullEnabled": false,
+  "creationDate": "2023-07-07T03:00:08.495896+00:00",
+  "dataEndpointEnabled": false,
+  "dataEndpointHostNames": [],
+  "encryption": {
+    "keyVaultProperties": null,
+    "status": "disabled"
+  },
+  "id": "/subscriptions/7f5ab906-207e-4f76-81e6-af8d4d65e823/resourceGroups/myFutureResourceGroup/providers/Microsoft.ContainerRegistry/registries/myfutureacr",
+  "identity": null,
+  "location": "eastus",
+  "loginServer": "myfutureacr.azurecr.io",
+  "name": "myfutureacr",
+  "networkRuleBypassOptions": "AzureServices",
+  "networkRuleSet": null,
+  "policies": {
+    "azureAdAuthenticationAsArmPolicy": {
+      "status": "enabled"
+    },
+    "exportPolicy": {
+      "status": "enabled"
+    },
+    "quarantinePolicy": {
+      "status": "disabled"
+    },
+    "retentionPolicy": {
+      "days": 7,
+      "lastUpdatedTime": "2023-07-07T03:30:49.173825+00:00",
+      "status": "disabled"
+    },
+    "softDeletePolicy": {
+      "lastUpdatedTime": "2023-07-07T03:30:49.173825+00:00",
+      "retentionDays": 7,
+      "status": "disabled"
+    },
+    "trustPolicy": {
+      "status": "disabled",
+      "type": "Notary"
+    }
+  },
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": "Enabled",
+  "resourceGroup": "myFutureResourceGroup",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "status": null,
+  "systemData": {
+    "createdAt": "2023-07-07T03:00:08.495896+00:00",
+    "createdBy": "diego.dmb@outlook.com",
+    "createdByType": "User",
+    "lastModifiedAt": "2023-07-07T03:30:48.996802+00:00",
+    "lastModifiedBy": "diego.dmb@outlook.com",
+    "lastModifiedByType": "User"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries",
+  "zoneRedundancy": "Disabled"
+}

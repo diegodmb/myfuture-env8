@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv
+  labels:
+    app: postgres-pv
+spec:
+  storageClassName: manual # Empty string must be explicitly set otherwise default StorageClass will be set
+  capacity:
+    storage: 500m
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/mnt/data"
+  ...
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pv
+spec:
+  storageClassName: manual
+  accessMode:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 500M

@@ -1,0 +1,199 @@
+{% extends "thepage/layout.html" %}
+{% load static %}
+
+{% block title %}
+<title>DHA | Acerca de mi</title>
+{% endblock title %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'thepage/about.css' %}">
+{% endblock head %}
+{% block body %}
+<main>
+<section class="landing"> 
+    <span data-aos="zoom-in" class="content"></span>
+    <div class="hero" id="hero">
+        <div class="topdecor">
+            <div class="frame">
+                {% for anim in tanims2 %}
+                    <span id="top2-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+            <div class="frame">
+                {% for anim in tanims3 %}
+                    <span id="top3-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+            <div class="frame">
+                {% for anim in tanims4 %}
+                    <span id="top4-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="pres">
+            <h1 class="headline">{{ landing.header1 }}</h1>
+            {% for sub in landing.sub%}
+            <p>{{ sub }}</p>
+            {%endfor%}
+        </div>
+        <div class="botdecor">
+            <div class="frame">
+            {% for anim in banims1 %}
+                <span id="bot1-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+            {% endfor %}
+            </div>
+            <div class="frame">
+                {% for anim in banims2 %}
+                    <span id="bot2-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</section>
+<section class="yo">
+    <div class="quote">
+        <img src="{% static yo.imgquote %}" alt="Quote Icon">
+        <h3 data-aos="fade-up">{{yo.quote}}</h3>
+    </div>
+    <div class="portrait">
+        <img data-aos="flip-left" src="{% static yo.img %}" alt="Mi retrato">
+    </div>
+</section>
+
+<section class="trayectoria" id="trayectoria">
+    <div class="header">
+        <h2 data-aos="fade-right">Con una trayectoria dedicada al servicio</h2>
+    </div>
+    <div class="tabs">
+    <div role="tablist" class="tablist">
+        {% for empresa in empresas %}
+            {% if forloop.counter == 1 %}
+            <div  role="tab" class="tab active" ><a href="tab{{forloop.counter}}">
+            {%else%} 
+            <div role="tab" class="tab"><a href="tab{{forloop.counter}}">
+            {% endif %}              
+                {{ empresa }}</a>
+            </div>
+        {% endfor %}
+        <div class="tab-indicator"></div>
+        <div class="extra">
+            <a data-aos="fade-up" href="{{ contacto.link }}"target="_blank">{{contacto.linkedin}} <img class="nt" src="{% static "thepage/img/new-tab.png" %}" alt="New Tab"></a>
+            <a data-aos="fade-up" href="{% static contacto.pdf %}"target="_blank">{{contacto.cv}} <img class="nt" src="{% static "thepage/img/new-tab.png" %}" alt="New Tab"></a>
+        </div>
+    </div>
+    <div data-aos="fade-up" id="expertise" class="tabs-content">
+        {% for tray in trayectoria %}
+            {% if forloop.counter == 1 %}
+            <div class="tab-content active" id="tab{{forloop.counter}}">
+                {%else%}
+            <div class="tab-content" id="tab{{forloop.counter}}">
+            {% endif %}            
+                <div class="contheader">
+                    <h5>{{tray.cargo}}</h5>
+                    <a href="{{tray.sitio}}"target="_blank"> {{tray.empresa}}</a>
+                </div>
+                <div class="contsubheader">
+                    <p>{{tray.periodo}}</p>
+                </div>
+                <div class="contlogros">
+                    {% for logro in tray.logros %}
+                    <div class="logro">
+                        <img src="{% static 'thepage/img/check-mark.png' %}" alt="check-mark logro"><p>{{logro}}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+</section>
+<section class="tools">
+    <div class="header">
+        <h2 data-aos="fade-right">Te ofrezco mis habilidades en el uso de diversas herramientas.</h2>
+    </div>
+    {% for tool in tools%}
+    <div data-aos="fade-up" class="tool">
+        <div class="decor">
+            <img src="{% static tool.img %}" alt="">
+        </div>
+        {% for tab in tool.tabs %}
+        {% if forloop.counter == 1 %}
+        <div class="ttab-content tc{{tool.tool}} active" id="{{tool.tool}}{{forloop.counter}}">
+            {%else%}
+        <div class="ttab-content tc{{tool.tool}}" id="{{tool.tool}}{{forloop.counter}}">
+            {% endif %}
+            <div class="desc">
+                <h5 data-aos="fade-left"class="tit">
+                    {{tab.header}}
+                </h5>
+                <div class="ext">
+                    {% for desc in tab.desc %}
+                    <p>{{desc}}</p>
+                    {% endfor %}
+                </div>
+
+                    {% if forloop.first %}
+                    <div class="atribs">
+                    {% for atrib in tool.atributos %}
+                    <p data-aos="fade-up" data-aos-delay="{{forloop.counter}}00" class="atrib">{{atrib}}</p>
+                    {%endfor%}
+                    </div>
+                    {% endif %}
+
+                    {% if forloop.last %}
+                    <div class="cta">
+                    <p>{{tool.cta}}</p>
+                    </div>
+                    {% endif %}
+
+
+            </div>
+        </div>
+        {% endfor %}
+        <div role="tablist" class="ttablist" onclick="handleTabClicks('{{tool.tool}}')">
+            {% for tab in tool.tablist %}
+                {% if forloop.first %}
+                <p role="tab" class="ttab tt{{tool.tool}} active" data-tab="{{tool.tool}}{{forloop.counter}}">
+                {%else%} 
+                <p role="tab" class="ttab tt{{tool.tool}}" data-tab="{{tool.tool}}{{forloop.counter}}">
+                {% endif %}              
+                    {{ tab }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<section class="extra">
+    <div class="header">
+        <h2 data-aos="fade-right">Habilidades complementarias</h2>
+    </div>
+    <div class="extra-tools">
+        {% for tool in etools %}
+        <div class="etool id="etool{{forloop.counter}}">
+            <div class="decor">
+                <img src="{% static tool.img %}" alt="{{tool.imgalt}}">
+            </div>
+            <div class="tit">
+                <h5>
+                    {{tool.header}}
+                </h5>
+            </div>
+            <div class="desc">
+                {% for item in tool.desc %}
+                <p>{{item}}</p>
+                {% endfor%}
+            </div>
+            <div class="cta">
+                <a href="">{{tool.cta}}</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{% static 'thepage/about.js' %}"></script>
+{% endblock body %}

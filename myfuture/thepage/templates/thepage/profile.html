@@ -1,0 +1,56 @@
+{% extends "thepage/layout.html" %}
+{% load static %}
+
+{% block title %}
+<title>DHA | Portfolio</title>
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'thepage/profile.css' %}">
+{% endblock head %}
+{% block body %}
+<main>
+    <section class="dwork" id="{{work.id}}">
+        <div class="heading">
+            <div class="item nombre">
+                <h2>{{work.nombre}}</h2>
+            </div>
+            <div class="hiden">
+                {%for tag in work.tags %} 
+                    <p>{{tag}}</p>
+                {% endfor %}
+            </div>
+            <div class="tec">
+                <div class="item head">
+                    <!-- <div class="decor"><img src="{% static work.decordesc %}" alt="Nutri Peek Imagen"></div> -->
+                    <div class="visitas"><h3>Audiencia: {{work.visitas}}</h3></div>
+                    <div class="link"><h3>Web:</h3><a href="https://{{work.sitio}}" target="_blank">{{work.sitio}} <img class="nt" src="{% static "thepage/img/new-tab.png" %}" alt="New Tab"></a></div>
+                    <div class="extend-r"><p>{{work.desc}}</p></div>
+                    
+                </div>
+                <span class="content tagcloud-{{work.id}}"></span>
+            </div>
+            <div data-aos="fade-up" class="vision">
+                <img src="{% static "thepage/img/quote.svg" %}" alt="Quote Icon">
+                {%for q in work.quote%}
+                <h3>{{q}}</h3>
+                {%endfor%}
+            </div>
+        </div>
+        {% for item in work.items %}
+        <div class="item detalle{% cycle '-d' '-r' %}">
+            <div data-aos="fade-up" class="det"><img src="{%static item.img %}" alt="{{item.imgalt}}"></div>
+            <div data-aos="fade-up" class="extend{% cycle '-d' '-r' %}">
+                <h3>{{item.desc}}</h3>
+                <div class="explain">
+                    {% for ext in item.ext %}
+                    <p>{{ext}}</p>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+<script src="{% static 'thepage/portfolio.js' %}"></script>
+{% endblock body%}

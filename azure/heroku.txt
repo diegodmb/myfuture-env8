@@ -1,0 +1,10 @@
+heroku login
+heroku container:login
+heroku create nombre_de_tu_aplicacion
+docker build -t nombre_de_tu_aplicacion .
+docker tag nombre_de_tu_aplicacion registry.heroku.com/nombre_de_tu_aplicacion/web
+docker push registry.heroku.com/nombre_de_tu_aplicacion/web
+heroku container:release web --app nombre_de_tu_aplicacion
+heroku open --app nombre_de_tu_aplicacion
+
+docker tag myfuture diegodmb7/myfuture:latest

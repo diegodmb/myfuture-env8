@@ -1,0 +1,27 @@
+https://github.com/dotja/django_kubernetes/blob/main/README.md
+base64 encode secrets
+echo -n postgresdb | base64
+check minikube is running
+minikube status
+apply database templates
+export LOC='/path/to/k8s/folder/'
+
+kubectl apply -f $LOC/database/secret.yaml
+kubectl apply -f $LOC/database/storage.yaml
+kubectl apply -f $LOC/database/deployment.yaml
+kubectl apply -f $LOC/database/service.yaml
+get the database local IP and place it in the application configmap
+kubectl get services
+nano $LOC/application/configmap.yaml
+apply application templates
+kubectl apply -f $LOC/application/secret.yaml
+kubectl apply -f $LOC/application/configmap.yaml
+kubectl apply -f $LOC/application/deployment.yaml
+kubectl apply -f $LOC/application/service.yaml
+get the app pod name and exec into container to do database migration (optional)
+kubectl get pods
+kubectl exec -it <pod name> -- /bin/bash
+python manage.py makemigrations
+python manage.py migrate
+port forwarding to reach the Django app from your browser
+kubectl port-forward service/<service name> <local port eg. 3000>:<container port eg. 80>

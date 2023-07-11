@@ -1,0 +1,12 @@
+version: '2018-10-01'
+services:
+  django-gunicorn:
+    image: myfutureaci.azurecr.io/django-gunicorn:latest
+    ports:
+      - port: 8000
+        protocol: tcp
+  nginx:
+    image: myfutureaci.azurecr.io/nginx:latest
+    ports:
+      - port: 80
+        protocol: tcp

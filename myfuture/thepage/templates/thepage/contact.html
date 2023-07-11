@@ -1,0 +1,52 @@
+{% extends "thepage/layout.html" %}
+{% load static %}
+
+{% block title %}
+<title>DHA | Contacto</title>
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'thepage/contact.css' %}">
+{% endblock head %}
+{% block body %}
+<main>
+<section class="landing">
+  <!--<div class="decor"></div>-->
+  <div class="data">
+    <div class="hero">
+        <div class="topdecor">
+          <div class="frame">
+              {% for anim in tanims1 %}
+                  <span id="top1-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+              {% endfor %}
+          </div>
+          <div class="frame">
+              {% for anim in tanims3 %}
+                  <span id="top3-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+              {% endfor %}
+          </div>
+        </div>
+      <h1>¿CONVERSAMOS?</h1>
+      <p>Ya sea por alguna consulta o un proyecto sobre el que quieras conversar, te invito a que coordinemos una videollamada o juntarnos a tomar un café para que me cuentes en detalle. 
+        Estoy aquí para escucharte y brindarte un servicio excepcional.</p>
+      <div class="botdecor">
+        <div class="frame">
+        {% for anim in banims1 %}
+            <span id="bot1-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+        {% endfor %}
+        </div>
+        <div class="frame">
+            {% for anim in banims2 %}
+                <span id="bot2-{{forloop.counter}}" style="background-color: {{anim.color}}"></span>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+      <form data-aos="fade-left" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Enviar</button>
+      </form>
+  </div>
+</section>
+</main>
+{% endblock body%}

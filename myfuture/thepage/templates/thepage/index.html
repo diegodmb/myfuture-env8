@@ -1,0 +1,153 @@
+{% extends "thepage/layout.html" %}
+{% load static %}
+
+{% block title %}
+<title>DHA | Estrategias y Desarrollos Web</title>
+{% endblock title %}
+
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'thepage/styles.css' %}">
+{% endblock head %}
+{% block body %}
+<main>
+<section class="landing">
+    <div class="hero" id="hero">
+        <h1 class="headline">{{ landing.header1 }} <span class="typed"></span> <br>{{ landing.header2 }}</h1>
+        <h3 class="subheadline">{{ landing.sub }}</h3>
+        <svg class="arrows">
+            <path class="a1" d="M0 0 L30 32 L60 0"></path>
+            <path class="a2" d="M0 20 L30 52 L60 20"></path>
+            <path class="a3" d="M0 40 L30 72 L60 40"></path>
+        </svg>
+    </div>
+    <div class="anims" id="ani">
+        {% for anim in anims %}
+            <div class="anim" style="width: {{anim.width}}rem; background-color: {{anim.color}}; animation-delay:{{ anim.delay }}s"></div>
+        {% endfor %}
+    </div>
+    <div class="anims1" id="ani1">
+        {% for anim in anims1 %}
+            <div class="anim" style="width: {{anim.width}}rem; background-color: {{anim.color}}; animation-delay:{{ anim.delay }}s"></div>
+        {% endfor %}
+    </div>
+    <div class="anims2" id="ani2">
+        {% for anim in anims2 %}
+            <div class="anim" style="width: {{anim.width}}rem; background-color: {{anim.color}}; animation-delay:{{ anim.delay }}s"></div>
+        {% endfor %}
+    </div>
+</section>
+<section class="banner1">
+    
+    <div class="quote" id="proposal">
+            <img src="{% static imgquote %}" alt="Quote">
+            <h3 data-aos="fade-up">{{ mission }}</h3>
+    </div>
+    <div class="portrait">
+        <img src="{% static portrait %}" alt="Soy yo.">
+    </div>
+
+</section>
+<section class="page2">
+    <div class="header">
+        <h2 data-aos="fade-right">{{segments.page2}}</h2>
+    </div>
+    <div class="p2topics">
+        {% for item in page2 %}
+        <div class="topic">
+            <div class="P2anim1" style="width: {{item.width1}}%; background-color: {{item.color1}}; animation-delay:{{ item.delay1 }}s"></div>
+            <div class="P2anim2" style="width: {{item.width2}}%; background-color: {{item.color2}}; animation-delay:{{ item.delay2 }}s"></div>
+            <div class="P2anim3" style="width: {{item.width3}}%; background-color: {{item.color3}}; animation-delay:{{ item.delay3 }}s"></div>
+            <a id="topic{{forloop.counter}}" class="nec" data-imagen="topicdecor{{forloop.counter}}" href=""><h6 data-aos="fade-left">{{ item.necesidad }}</h6></a>
+            <img class="topicdecor" id="topicdecor{{forloop.counter}}" src="{% static item.imgdirec %}" alt="">
+        </div>
+        {% endfor %}
+        </div>
+        <div class="extended">
+        {% for item in extended %}
+            <div class="extmargin" id="ext{{forloop.counter}}">
+                <div class="cross" id="close{{forloop.counter}}">
+                    <img src="{% static 'thepage/img/cross.png' %}" alt="">
+                </div>
+                <div class="ext">
+                    <div class="decor">
+                        <img class="decext" src="{% static item.imgdirec %}" alt="{{logo.alt}}">
+                    </div>
+                    <div class="extd">
+                        <h6>{{ item.header }}</h6>
+                        <div class="desc">
+                            {% for subitem in item.items %}
+                                <p>{{ subitem }}</p>
+                            {% endfor %}
+                        </div>
+                        <div class="cta">
+                            <a href="{{ item.link }}">{{ item.cta }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="page3">
+    <div class="header">
+        <h2 data-aos="fade-right">{{segments.page3}}</h2>
+    </div>
+    <div class="atributos">
+        {% for item in page3 %}
+        <div data-aos="fade-up" class="atrib" id="atrib{{forloop.counter}}">
+            <div class="extend">
+                <div class="icons">
+                {% for logo in item.logos %}
+                    <img data-aos="fade-up" data-aos-delay="{{forloop.counter}}00" src="{% static logo.img %}" alt="{{logo.alt}}">
+                {% endfor %}
+                </div>
+                <div class="desc">
+                    <div class="ddd">
+                    <h5>{{item.subheader}}</h5>
+                    {% for dd in item.desc %}
+                        <p>{{dd}}</p>
+                    {% endfor %}
+                    </div>
+                    <div class="cta">
+                        <a href="{{item.link}}">{{ item.cta }}</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+<section class="page4">
+    <div class="header">
+        <h2 data-aos="fade-right">{{segments.page4}}</h2>
+    </div>
+    <div class="examples">
+        {% for item in page4 %}
+        <div data-aos="fade-up" data-aos-delay="{{forloop.counter}}00" class="example" id="ejm{{forloop.counter}}">
+            <div class="example-hover">
+                <div class="cta">
+                    <a href="{% url 'cliente' profile=item.link %}">Quiero ver más</a>
+                </div>
+            </div>
+            <div class="bkg">
+                <img src="{% static item.bkg %}"alt="{{item.bkgalt}}">
+            </div>
+            <div class="detalle">
+                <img src="{% static item.logo %}"alt="{{item.logoalt}}">
+                <h5>{{item.desc}}</h5>
+                <div class="expertise">
+                    {% for exper in item.expertise %}
+                        <p>{{ exper }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="{% static 'thepage/app.js' %}"></script>
+{% endblock body %}
