@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG')
 
 
-ALLOWED_HOSTS = ['*']  # O ajusta los hosts permitidos según tus necesidades
+ALLOWED_HOSTS = ['.vercel.app']  # O ajusta los hosts permitidos según tus necesidades
 
 
 
